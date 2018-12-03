@@ -1,1 +1,37 @@
 
+$lyft-primary: #ff4081;
+$lyft-secondary: #ff77a5;
+$uber-primary: #000000;
+$uber-secondary: #353535;
+
+
+#lyft{
+    background-color: $lyft-primary;
+    color:white;
+}
+#lyft:active{
+    background-color: $lyft-secondary;
+    color:white;
+}
+#uber{
+    background-color: $uber-primary;
+    color:white;
+}
+#uber:active{
+    color:white;
+    background-color: $uber-secondary;
+}
+
+.tripButton{
+    margin: 5px;
+    padding: 10px 20px;
+}
+
+.emptyLabel{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+    color: #989aa2;
+}

@@ -1,0 +1,34 @@
+<ion-header>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <ion-buttons slot="end">
+      <ion-button (click)='clear()'>Clear All</ion-button>
+      </ion-buttons>
+      <ion-title>History</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content padding>
+
+    <ion-label *ngIf="history?.length == 0" class='emptyLabel'>You have no past trips!</ion-label>
+
+    <ion-list>
+        <ion-list-header>Past Trips</ion-list-header>
+        <ion-item-sliding *ngFor='let archive of history let archiveIndex = index' #archiveItem>
+          <ion-item>
+            {{archive.trip.locationName}}
+            <ion-icon name="arrow-round-forward"></ion-icon>
+            {{archive.trip.destinationName}}
+            <div class="item-note" slot="end">
+              <h6 [ngClass]="{'lyft' : archive.lyftTaken, 'uber' : !archive.lyftTaken}">{{archive.timeFormat}}</h6>
+            </div>
+          </ion-item>
+      
+          <ion-item-options side="right">
+            <button ion-button color="danger" (click)="delete(archiveItem,archiveIndex)" class='danger'>Delete</button>
+          </ion-item-options>
+        </ion-item-sliding>
+      </ion-list>
+  </ion-content>

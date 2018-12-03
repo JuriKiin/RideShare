@@ -3,14 +3,22 @@
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
-    <ion-title>
-      Home
-    </ion-title>
+    <ion-title>RideShare</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content padding>
-  The world is your oyster.
-  <p>If you get lost, the
-    <a target="_blank" rel="noopener" href="https://ionicframework.com/docs">docs</a> will be your guide.</p>
+  <ion-list>
+    <ion-item>
+      <ion-label color="primary">Where to?</ion-label>
+      <ion-input type='text' placeholder="Home"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label color="primary" fixed>Where from?</ion-label>
+      <ion-input type='text' placeholder="Work"></ion-input>
+    </ion-item>
+  </ion-list>
+
+  <app-map></app-map>
+
 </ion-content>

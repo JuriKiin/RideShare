@@ -9,16 +9,22 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
   templateUrl: 'app.component.html'
 })
 export class AppComponent {
+  
   public appPages = [
     {
-      title: 'Home',
+      title: 'Map',
       url: '/home',
-      icon: 'home'
+      icon: 'map'
     },
     {
-      title: 'List',
+      title: 'Favorites',
       url: '/list',
-      icon: 'list'
+      icon: 'heart'
+    },
+    {
+      title: 'History',
+      url: '/history',
+      icon: 'archive'
     }
   ];
 
@@ -36,4 +42,6 @@ export class AppComponent {
       this.splashScreen.hide();
     });
   }
+
+  
 }

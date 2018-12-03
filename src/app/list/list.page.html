@@ -1,27 +1,41 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-menu-button></ion-menu-button>
-    </ion-buttons>
-    <ion-title>
-      List
-    </ion-title>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <ion-title>Favorites</ion-title>
   </ion-toolbar>
 </ion-header>
+  
+<ion-content padding>
 
-<ion-content>
+  <ion-label *ngIf="trips?.length == 0" class='emptyLabel'>You have no favorites!</ion-label>
+
   <ion-list>
-    <ion-item *ngFor="let item of items">
-      <ion-icon [name]="item.icon" slot="start"></ion-icon>
-      {{item.title}}
-      <div class="item-note" slot="end">
-        {{item.note}}
-      </div>
-    </ion-item>
+    <ion-list-header> Trip Information</ion-list-header>
+    <ion-item-sliding #slidingItem *ngFor='let trip of trips let tripIndex = index'>
+      <ion-item>
+        {{trip.locationName}}
+        <ion-icon name="arrow-round-forward"></ion-icon>
+        {{trip.destinationName}}
+        <div class="item-note" slot="end">
+          <!-- This needs to be replaced by the Lyft and Uber price buttons -->
+          <button id='lyft' class='tripButton' (click)='orderLyft(trip)'>Lyft</button>
+          <button id='uber' class='tripButton' (click)='orderUber(trip)'>Uber</button>
+        </div>
+      </ion-item>
+  
+      <ion-item-options side="right">
+        <button ion-button color="danger" (click)="edit(slidingItem,tripIndex)" class='warning'>Edit</button>
+        <button ion-button color="danger" (click)="delete(slidingItem, tripIndex)" class='danger'>Delete</button>
+      </ion-item-options>
+    </ion-item-sliding>
   </ion-list>
-  <!--
-    <div *ngIf="selectedItem" padding>
-      You navigated here from <b>{{selectedItem.title }}</b>
-    </div>
-  -->
+
+  <ion-fab vertical="bottom" horizontal="end" padding>
+    <ion-fab-button (click)="add()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
 </ion-content>
